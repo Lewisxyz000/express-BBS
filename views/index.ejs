@@ -1,0 +1,25 @@
+<% include _header %>
+<%if(contents.length>0){%>
+        <%var i = 0;%>
+        <%contents.forEach(function(item){%>
+        <%i++;%>
+        <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-muted pull-right">
+          <% if (item.writer === "Anonymous") {%>
+          by <%= item.writer %>
+          <%} else {%>
+          <a href="/users/<%= item.writer %>">by <%= item.writer %></a>
+          <% } %>
+          <%= item.date %>
+        </div>
+        <%= item.title %>
+      </div>
+      <div class="panel-body">
+        <%= item.contents %>
+      </div>
+    </div>
+        <%})%>
+<% } else { %>   No entries! <a href="/new-entry">Add one!</a>
+<% } %>
+<% include _footer %>
